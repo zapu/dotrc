@@ -244,6 +244,8 @@ alias fst="sedpq 1"
 
 alias comptonglx="pkill compton ; compton --backend glx"
 
+alias sublime="subl"
+
 ### Machine-specific extras
 
 if [[ -r $HOME/.zlocal ]]; then
