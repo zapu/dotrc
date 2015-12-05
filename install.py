@@ -43,7 +43,7 @@ def assert_install_to(our_name, target_name):
     else:
         return (True, "")
 
-for file in ['.tmux.conf', '.zshrc', '.gitconfig', '.zshenv']:
+for file in ['.tmux.conf', '.zshrc', '.gitconfig', '.zshenv', '.vimrc']:
     our = path.join(config_dir, file)
     target = path.join(home_dir, file)
     if file == '.gitconfig' and os.getlogin() != 'zapu':
