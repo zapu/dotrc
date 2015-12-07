@@ -20,6 +20,8 @@
     new = green bold
 [color "status"]
     added = yellow
-	changed = green
-	untracked = cyan
+    changed = green
+    untracked = cyan
 
+[alias]
+    listu = ls-files --other --exclude-standard
