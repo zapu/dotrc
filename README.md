@@ -34,3 +34,7 @@ Some cool (?) aliases:
 
 Some functions:
 * `activate_venv()` - find a virtualenv in current dir and activate it (asks first).
+
+vim
+---
+I use vim for quick file editing and commit authoring. There is `textwidth` setting to make commit message lines wrap after 72 characters. There are some settings related to indenting (use spaces, indent with four of them), displaying control characters (I want to see lonely tabs and trailing spaces), and searching (global and ignore case by default).
