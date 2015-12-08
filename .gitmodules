@@ -1,0 +1,21 @@
+[submodule "sublime-text-3/JavaScriptNext.tmLanguage"]
+	path = sublime-text-3/JavaScriptNext.tmLanguage
+	url = https://github.com/Benvie/JavaScriptNext.tmLanguage.git
+[submodule "sublime-text-3/GitGutter"]
+	path = sublime-text-3/GitGutter
+	url = https://github.com/jisaacks/GitGutter.git
+[submodule "sublime-text-3/Sublime-Wrap-Plus"]
+	path = sublime-text-3/Sublime-Wrap-Plus
+	url = https://github.com/ehuss/Sublime-Wrap-Plus.git
+[submodule "sublime-text-3/babel-sublime"]
+	path = sublime-text-3/babel-sublime
+	url = https://github.com/babel/babel-sublime.git
+[submodule "sublime-text-3/MagicPython"]
+	path = sublime-text-3/MagicPython
+	url = https://github.com/MagicStack/MagicPython.git
+[submodule "sublime-text-3/SublimeAllAutocomplete"]
+	path = sublime-text-3/SublimeAllAutocomplete
+	url = https://github.com/alienhard/SublimeAllAutocomplete.git
+[submodule "sublime-text-3/CoffeeScript-Sublime-Plugin"]
+	path = sublime-text-3/CoffeeScript-Sublime-Plugin
+	url = https://github.com/Xavura/CoffeeScript-Sublime-Plugin.git

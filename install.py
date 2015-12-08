@@ -12,7 +12,7 @@ home_dir = path.realpath(path.expanduser("~"))
 config_dir = path.dirname(path.realpath(__file__))
 assert path.isdir(home_dir), "Home dir?"
 
-def assert_install_to(our_name, target_name):
+def assert_install_to(our_name, target_name, is_dir=False):
     """
     Check if we shall install a config file to filename. We are not
     installing if the filename is taken (if there is a directory with
@@ -26,7 +26,11 @@ def assert_install_to(our_name, target_name):
     there is no error, and when there is, it is interpreted as "can't
     install, already installed".
     """
-    assert path.isfile(our_name), "{} exists?".format(our_name)
+    if not is_dir:
+        assert path.isfile(our_name), "{} exists?".format(our_name)
+    else:
+        assert path.isdir(our_name), "{} exists?".format(our_name)
+
     assert not path.islink(our_name), "{} is not a link?".format(our_name)
 
     if path.islink(target_name):
@@ -34,31 +38,51 @@ def assert_install_to(our_name, target_name):
             return (False, None)
         else:
             return (False, "There is a file (symbolic link) in the target path.")
-    elif path.isfile(target_name):
-        return (False, "File on target name already exists.")
-    elif path.isdir(target_name):
+    elif not is_dir and path.isdir(target_name):
         return (False, "Target path is a directory")
+    elif is_dir and path.isfile(target_name):
+        return (False, "Target path is a file")
+    elif path.exists(target_name):
+        return (False, "Target name already exists.")
     elif not path.isdir(path.dirname(path.realpath(target_name))):
         return (False, "Target path's parent dir does not exist.")
     else:
         return (True, "")
 
+def try_install_interactive(name, our, target, is_dir=False):
+    """
+    Checks if it is possible to install. Makes symlink and prints
+    message to terminal.
+    """
+    can_install, why = assert_install_to(our, target, is_dir)
+
+    if not can_install:
+        if not why:
+            print(term.magenta('❤'), '{} is already installed.'.format(term.yellow(name)))
+        else:
+            print(term.red('✗'), 'Not installing {}: {}'.format(term.yellow(name), why))
+    else:
+        os.symlink(our, target)
+        print(term.green('✓'), 'Installing {}'.format(term.yellow(name)))
+
 for file in ['.tmux.conf', '.zshrc', '.gitconfig', '.zshenv', '.vimrc']:
     our = path.join(config_dir, file)
     target = path.join(home_dir, file)
     if file == '.gitconfig' and os.getlogin() != 'zapu':
-        print(term.red('x'), 
+        print(term.red('x'),
             "Not installing {}, or are you really me?".format(term.yellow(file)))
         continue
 
-    can_install, why = assert_install_to(our, target)
+    try_install_interactive(file, our, target)
 
-    if not can_install:
-        if not why:
-            print(term.magenta('❤'), '{} is already installed.'.format(term.yellow(file)))
-        else:
-            print(term.red('✗'), 'Not installing {}: {}'.format(term.yellow(file), why))
-    else:
-        os.symlink(our, target)
-        print(term.green('✓'), 'Installing {}'.format(term.yellow(file)))
-        
+
+# Install sublime-text-3 packages dir
+
+def install_sublime():
+    our = path.join(config_dir, 'sublime-text-3')
+    target = path.join(home_dir, '.config', 'sublime-text-3', 'Packages')
+
+    try_install_interactive('sublime-text-3/Packages', our, target, is_dir=True)
+
+install_sublime()
+
