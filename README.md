@@ -38,3 +38,15 @@ Some functions:
 vim
 ---
 I use vim for quick file editing and commit authoring. There is `textwidth` setting to make commit message lines wrap after 72 characters. There are some settings related to indenting (use spaces, indent with four of them), displaying control characters (I want to see lonely tabs and trailing spaces), and searching (global and ignore case by default).
+
+Sublime Text 3
+--------------
+I use a number of Sublime Text plugins. 
+
+Some of them are for syntax highlighting that do better job than default ones (`MagicPython`, `JavaScriptNext`), colour obscure languages (`CoffeeScript`, `babel`). `babel` is interesting because it colours new ES6 syntax but also React JSX. `Wrap-Plus` wraps comments or other blocks of text (I have `alt+q` keybinding). 
+
+`GitGutter` displays an icon in gutter area if a line has changed.
+
+`AllAutocomplete` makes sublime display autocomplete hits from other open files.
+
+My user settings mostly deal with tabs/spaces, trailing whitespace and newline at eof. There are also settings to make sublime ignore cache files, repository files, `node_modules` etc. (they are not shown in side bar and are not suggested in "goto anything").
