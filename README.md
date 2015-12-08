@@ -47,6 +47,6 @@ Some of them are for syntax highlighting that do better job than default ones (`
 
 `GitGutter` displays an icon in gutter area if a line has changed.
 
-`AllAutocomplete` makes sublime display autocomplete hits from other open files.
+`AllAutocomplete` makes sublime display autocomplete hints from other open files.
 
 My user settings mostly deal with tabs/spaces, trailing whitespace and newline at eof. There are also settings to make sublime ignore cache files, repository files, `node_modules` etc. (they are not shown in side bar and are not suggested in "goto anything").
