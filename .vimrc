@@ -19,6 +19,15 @@ set fileformats=unix,dos    " new files starts with unix linebreaks
 set list
 set listchars=tab:↹·,extends:⇉,precedes:⇇,nbsp:␠,trail:␠,nbsp:␣
 
+" Soft word wrapping
+set wrap
+set linebreak
+" jk will traver through soft lines instead of hard lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gkk
+
 " Search
 set ignorecase
 set smartcase               " case-ins search, unless there are capitals
