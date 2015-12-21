@@ -25,3 +25,6 @@
 
 [alias]
     listu = ls-files --other --exclude-standard
+
+[push]
+    default = simple
