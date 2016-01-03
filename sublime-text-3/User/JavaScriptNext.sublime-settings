@@ -1,7 +1,7 @@
 {
 	"extensions":
 	[
-		"js",
+		
 	],
     "ensure_newline_at_eof_on_save": true,
     "trim_trailing_white_space_on_save": true
