@@ -19,3 +19,6 @@
 [submodule "sublime-text-3/CoffeeScript-Sublime-Plugin"]
 	path = sublime-text-3/CoffeeScript-Sublime-Plugin
 	url = https://github.com/Xavura/CoffeeScript-Sublime-Plugin.git
+[submodule "sublime-text-3/sass-textmate-bundle"]
+	path = sublime-text-3/sass-textmate-bundle
+	url = https://github.com/nathos/sass-textmate-bundle.git
