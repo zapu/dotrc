@@ -37,10 +37,13 @@ def assert_install_to(our_name, target_name, is_dir=False):
     assert not path.islink(our_name), "{} is not a link?".format(our_name)
 
     if path.islink(target_name):
+        # This check will fail because, on Windows, realpath does not
+        # follow symlinks.
+        # https://bugs.python.org/issue9949
         if path.realpath(target_name) == path.realpath(our_name):
             return (False, None)
         else:
-            return (False, "There is a file (symbolic link) in the target path.")
+            return (False, "There is a file (symbolic link) in the target path. Possibly installed?")
     elif not is_dir and path.isdir(target_name):
         return (False, "Target path is a directory")
     elif is_dir and path.isfile(target_name):
@@ -95,4 +98,14 @@ def install_sublime():
     try_install_interactive('Sublime Text 3/Packages', our, target, is_dir=True)
 
 install_sublime()
+
+# Install .vim folder
+
+def install_dotvim():
+    our = path.join(config_dir, '.vim')
+    target = path.join(home_dir, 'vimfiles')
+
+    try_install_interactive('vimfiles', our, target, is_dir=True)
+
+install_dotvim()
 

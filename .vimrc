@@ -39,7 +39,7 @@ if has("win32")
 
     if has("gui_running")
         " Set a nicer font.
-        set guifont=DejaVu\ Sans\ Mono:h10:cDEFAULT
+        set guifont=DejaVu\ Sans\ Mono:h11:cDEFAULT
         " Hide the toolbar.
         set guioptions-=T    
 
