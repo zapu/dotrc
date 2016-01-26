@@ -1,17 +1,17 @@
-#!/usr/bin/env python3
-
 import os
 import os.path as path
 import platform
+import sys
 
-assert platform.system() == 'Linux', "This install script is Linux only."
+assert platform.system() == 'Windows', "This install script is Windows only."
 
 #import deps.sh as sh
-import deps.blessings as blessings
 
-term = blessings.Terminal()
+import codecs
+sys.stdout = codecs.getwriter('utf8')(sys.stdout.detach())
 
 home_dir = path.realpath(path.expanduser("~"))
+roaming_dir = path.realpath(os.getenv('APPDATA'))
 config_dir = path.dirname(path.realpath(__file__))
 assert path.isdir(home_dir), "Home dir?"
 
@@ -61,31 +61,38 @@ def try_install_interactive(name, our, target, is_dir=False):
 
     if not can_install:
         if not why:
-            print(term.magenta('❤'), '{} is already installed.'.format(term.yellow(name)))
+            print('❤ {} is already installed.'.format(name))
         else:
-            print(term.red('✗'), 'Not installing {}: {}'.format(term.yellow(name), why))
+            print('✗ Not installing {}: {}'.format(name, why))
     else:
         os.symlink(our, target)
-        print(term.green('✓'), 'Installing {}'.format(term.yellow(name)))
+        print('✓ Installing {}'.format(name))
 
-for file in ['.tmux.conf', '.zshrc', '.gitconfig', '.zshenv', '.vimrc']:
-    our = path.join(config_dir, file)
-    target = path.join(home_dir, file)
-    if file == '.gitconfig' and os.getlogin() != 'zapu':
-        print(term.red('x'),
-            "Not installing {}, or are you really me?".format(term.yellow(file)))
-        continue
+def install_file(config_file_name, target_dir, target_file_name = None):
+    if target_file_name == None:
+        target_file_name = config_file_name
 
-    try_install_interactive(file, our, target)
+    our = path.join(config_dir, config_file_name)
+    target = path.join(target_dir, target_file_name)
+    if target_file_name == '.gitconfig' and \
+        (os.getlogin() != 'zapu' and os.getlogin() != 'Zapu'):
+        print("Not installing {}, or are you really me?".format(target_file_name))
+        return
 
+    try_install_interactive(config_file_name, our, target)
+
+# Install windows config files
+
+install_file('.vimrc', home_dir)
+install_file('.gitconfig_win', home_dir, '.gitconfig')
 
 # Install sublime-text-3 packages dir
 
 def install_sublime():
     our = path.join(config_dir, 'sublime-text-3')
-    target = path.join(home_dir, '.config', 'sublime-text-3', 'Packages')
+    target = path.join(roaming_dir, 'Sublime Text 3', 'Packages')
 
-    try_install_interactive('sublime-text-3/Packages', our, target, is_dir=True)
+    try_install_interactive('Sublime Text 3/Packages', our, target, is_dir=True)
 
 install_sublime()
 

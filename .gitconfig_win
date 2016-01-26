@@ -1,0 +1,19 @@
+[core]
+	pager = less -SR
+	autocrlf = false
+	editor = "'C:/Program Files (x86)/Vim/vim74/gvim.exe' -f -i NONE"
+
+[user]
+	email = michal@zapu.net
+	name = Michał Zochniak
+
+[alias]
+	log3 = log -n 3
+	listu = ls-files --other --exclude-standard
+	rso = remote show origin
+
+[push]
+	default = simple
+
+[pager]
+	show = 'C:/Program Files (x86)/Vim/vim74/gvim.exe' +1 -
