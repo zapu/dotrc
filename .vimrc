@@ -33,6 +33,13 @@ set gdefault                " s///g by default
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" // at the end of paths make vim use smart naming 
+" for name collisions.
+set backupdir=~/.vim/backup//   " backup storage
+set directory=~/.vim/swap//     " swap storage
+set undodir=~/.vim/undo//       " persistent undo storage
+set undofile                    " persistent undo on
+
 if has("win32")
     set background=light
     color solarized 
@@ -52,8 +59,13 @@ if has("win32")
 
     " redefine new files
     set fileformats=dos,unix
+    set fileencoding=utf-8
 
     set nolist " ?
+
+    set backupdir=~/vimfiles/backup//   " backup storage
+    set directory=~/vimfiles/swap//     " swap storage
+    set undodir=~/vimfiles/undo//       " persistent undo storage
 else
     " linux
     set list
