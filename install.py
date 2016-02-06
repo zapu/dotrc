@@ -93,7 +93,7 @@ install_sublime()
 
 def install_dotvim():
     our = path.join(config_dir, '.vim')
-    target = path.join(home_dir, 'vim')
+    target = path.join(home_dir, '.vim')
 
     try_install_interactive('.vim', our, target, is_dir=True)
 
