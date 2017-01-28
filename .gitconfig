@@ -26,7 +26,7 @@
 [alias]
     listu = ls-files --other --exclude-standard
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    commit-wip = commit -m "Work In Progress - don't forget to reset --soft"
+    commit-wip = commit -m "\"Work In Progress - dont forget to reset --soft\""
     soft-reset = reset --soft HEAD~1
     recommit = commit -c ORIG_HEAD
 
