@@ -6,6 +6,9 @@ syntax on
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" Do "real" tabs in makefile instead of spaces, because it's makefile.
+autocmd FileType make setlocal noexpandtab
+
 " indents, whitespace
 set autoindent              " keep indenting on newlines
 set tabstop=4               " 
