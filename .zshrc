@@ -275,4 +275,8 @@ activate_venv() {
 	fi
 }
 
+add_pwd_to_path() {
+    export PATH=`pwd`:$PATH
+    echo $PATH
+}
 
