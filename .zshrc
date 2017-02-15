@@ -246,6 +246,13 @@ alias comptonglx="pkill compton ; compton --backend glx"
 
 alias sublime="subl"
 
+# clipboard support - be able to cat to/from clipboard using xclip
+# E.g. "git --no-pager diff | clip", "clip -o | less"
+alias clip="xclip -selection clipboard"
+# pbcopy/pbpaste are OSX commands
+alias pbcopy="clip"
+alias pbpaste="clip -o"
+
 ### Machine-specific extras
 
 if [[ -r $HOME/.zlocal ]]; then
