@@ -61,7 +61,12 @@ REPORTTIME=5
 
 ### Prompt
 
-PROMPT="%{%(!.$fg_bold[red].$fg_bold[green])%}%n@%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} %(!.#.») "
+PROMPT_nm="%{%(!.$fg_bold[red].$fg_bold[green])%}%n@%m%{$reset_color%} "
+PROMPT_path="%{$fg_bold[blue]%}%~%{$reset_color%}"
+# Comment out if you don't want path shortening
+PROMPT_path="%{$fg_bold[blue]%}%(4~|%-1~/…/%2~|%3~)%{$reset_color%}"
+PROMPT=$PROMPT_nm$PROMPT_path"%(!.#. ») "
+
 RPROMPT_code="%(?..\$? %{$fg_no_bold[red]%}%?%{$reset_color%}  )"
 RPROMPT_jobs="%1(j.%%# %{$fg_no_bold[cyan]%}%j%{$reset_color%}  .)"
 RPROMPT_time="%{$fg_bold[black]%}%*%{$reset_color%}"
@@ -252,6 +257,8 @@ alias clip="xclip -selection clipboard"
 # pbcopy/pbpaste are OSX commands
 alias pbcopy="clip"
 alias pbpaste="clip -o"
+
+alias p="pwd"
 
 ### Machine-specific extras
 
