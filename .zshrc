@@ -237,6 +237,21 @@ alias rcp="rsync -a --stats --progress"
 alias igrep="grep -i"
 alias findhere="noglob find . -iname"
 
+function grephere() {
+    grep_args=("-inIEr" "--color=ALWAYS")
+    if [[ $# -eq 1 ]]; then
+        # Just the search string: search in all files, recursively, 
+        # in current dir.
+        grep $grep_args $1 .
+    elif [[ $# -eq 2 ]]; then
+        # filetype and search string, filetype comes first.
+        grep $grep_args --include $1 $2
+    elif [[ $# -eq 3 ]]; then
+        # Filetype, search str and directory.
+        grep $grep_args --include $1 $2 $3
+    fi
+}
+
 # get line $1 from output (counting from 1)
 # (useful if e.g. find returns more than one)
 # and we want to supply it with backticks
