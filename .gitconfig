@@ -29,6 +29,7 @@
     commit-wip = commit -m "\"Work In Progress - dont forget to reset --soft\""
     soft-reset = reset --soft HEAD~1
     recommit = commit -c ORIG_HEAD
+    diffs = diff --staged
 
 [push]
     default = simple
