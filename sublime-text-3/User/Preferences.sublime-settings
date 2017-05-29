@@ -1,6 +1,6 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/Colorsublime-Themes/1337.tmTheme",
+	"color_scheme": "Packages/daylerees-themes/legacy/PeacocksInSpace.tmTheme",
 	"file_exclude_patterns":
 	[
 		".DS_Store",
