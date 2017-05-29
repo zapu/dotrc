@@ -30,6 +30,10 @@
     soft-reset = reset --soft HEAD~1
     recommit = commit -c ORIG_HEAD
     diffs = diff --staged
+    diff-filenames = !git --no-pager diff --name-only
+    diffs-filenames = !git --no-pager diff --staged --name-only
+    show-filenames = !git --no-pager show --name-only
+    pups = pull upstream master
 
 [push]
     default = simple
