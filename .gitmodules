@@ -25,3 +25,6 @@
 [submodule "sublime-text-3/daylerees-themes"]
 	path = sublime-text-3/daylerees-themes
 	url = https://github.com/daylerees/colour-schemes.git
+[submodule "sublime-text-3/SublimeFunctionNameDisplay"]
+	path = sublime-text-3/SublimeFunctionNameDisplay
+	url = https://github.com/akrabat/SublimeFunctionNameDisplay
