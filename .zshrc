@@ -302,3 +302,7 @@ add_pwd_to_path() {
     echo $PATH
 }
 
+cdd() {
+    cd $(dirname $1)
+}
+
