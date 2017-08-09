@@ -34,6 +34,7 @@
     diffs-filenames = !git --no-pager diff --staged --name-only
     show-filenames = !git --no-pager show --name-only
     pups = pull upstream master
+    pops = pull origin master
 
 [push]
     default = simple
