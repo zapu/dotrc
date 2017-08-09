@@ -1,16 +1,16 @@
 [core]
-	pager = less -SR
-	autocrlf = false
-	editor = "'C:/Program Files (x86)/Vim/vim74/gvim.exe' -f -i NONE"
+    pager = less -SR
+    autocrlf = false
+    editor = "'C:/Program Files (x86)/Vim/vim74/gvim.exe' -f -i NONE"
 
 [user]
-	email = michal@zapu.net
-	name = Michał Zochniak
+    email = michal@zapu.net
+    name = Michał Zochniak
 
 [alias]
-	log3 = log -n 3
-	listu = ls-files --other --exclude-standard
-	rso = remote show origin
+    log3 = log -n 3
+    listu = ls-files --other --exclude-standard
+    rso = remote show origin
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     commit-wip = commit -m "\"Work In Progress - dont forget to reset --soft\""
     soft-reset = reset --soft HEAD~1
@@ -22,7 +22,7 @@
     pups = pull upstream master
 
 [push]
-	default = simple
+    default = simple
 
 [pager]
-	show = 'C:/Program Files (x86)/Vim/vim74/gvim.exe' +1 -
+    show = 'C:/Program Files (x86)/Vim/vim74/gvim.exe' +1 -
