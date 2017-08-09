@@ -11,6 +11,15 @@
 	log3 = log -n 3
 	listu = ls-files --other --exclude-standard
 	rso = remote show origin
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    commit-wip = commit -m "\"Work In Progress - dont forget to reset --soft\""
+    soft-reset = reset --soft HEAD~1
+    recommit = commit -c ORIG_HEAD
+    diffs = diff --staged
+    diff-filenames = !git --no-pager diff --name-only
+    diffs-filenames = !git --no-pager diff --staged --name-only
+    show-filenames = !git --no-pager show --name-only
+    pups = pull upstream master
 
 [push]
 	default = simple
