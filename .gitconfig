@@ -6,7 +6,6 @@
     name = Michał Zochniak
 
 [color]
-    ui = true
     branch = auto
     diff = auto
     status = auto
@@ -35,6 +34,7 @@
     show-filenames = !git --no-pager show --name-only
     pups = pull upstream master
     pops = pull origin master
+    curbr = rev-parse --abbrev-ref HEAD
 
 [push]
     default = simple
