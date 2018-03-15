@@ -34,7 +34,9 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' ignored-patterns '*?.pyc' '__pycache__'
 zstyle ':completion:*:*:rm:*:*' ignored-patterns
 
-zstyle :compinstall filename '/home/eevee/.zshrc'
+# Do not try to autocomplete in parent dirs, it's annoying
+# on network attached volumes.
+zstyle ':completion:*' accept-exact-dirs true
 
 # Always do mid-word tab completion
 setopt complete_in_word
