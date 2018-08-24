@@ -117,7 +117,7 @@ function title {
     # I don't really need to title every single one with the machine name.
     # On the other hand, if I'm not logged in as me (but, e.g., root), I'd
     # certainly like to know that!
-    if [[ $USER != 'eevee' && $USER != 'amunroe' ]]; then
+    if [[ $USER != 'zapu' && $USER != 'michal' ]]; then
         prefix="[$USER] "
     fi
     # Set screen window title
@@ -258,7 +258,7 @@ function grephere() {
 # (useful if e.g. find returns more than one)
 # and we want to supply it with backticks
 function sedpq() {
-	sed -n -e "$1{p;q}"
+    sed -n -e "$1{p;q}"
 }
 
 # get first line from output 
@@ -276,6 +276,16 @@ alias pbcopy="clip"
 alias pbpaste="clip -o"
 
 alias p="pwd"
+alias bwd='pwd | sed -e "s:/:🥖:g"'
+
+add_pwd_to_path() {
+    export PATH=`pwd`:$PATH
+    echo $PATH
+}
+
+cdd() {
+    cd $(dirname $1)
+}
 
 ### Machine-specific extras
 
@@ -297,14 +307,5 @@ activate_venv() {
 	else
 		echo "virtualenv activate not found"		
 	fi
-}
-
-add_pwd_to_path() {
-    export PATH=`pwd`:$PATH
-    echo $PATH
-}
-
-cdd() {
-    cd $(dirname $1)
 }
 
