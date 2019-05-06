@@ -35,6 +35,7 @@
     pups = pull upstream master
     pops = pull origin master
     curbr = rev-parse --abbrev-ref HEAD
+    latest = branch --sort=-committerdate
 
 [push]
     default = simple
