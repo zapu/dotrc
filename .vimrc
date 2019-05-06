@@ -43,6 +43,12 @@ set directory=~/.vim/swap//     " swap storage
 set undodir=~/.vim/undo//       " persistent undo storage
 set undofile                    " persistent undo on
 
+" enable spell checking everywhere
+set spell spelllang=en_us
+
+" disable macro mode (when hitting q)
+map q <Nop>
+
 if has("win32")
     set background=light
     color solarized 
