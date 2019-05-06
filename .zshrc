@@ -105,7 +105,6 @@ esac
 alias ls="ls $LSOPTS"
 alias ll="ls $LLOPTS | less -R"
 
-
 ### screen (and tmux's screen-compatible title support)
 
 function title {
@@ -236,6 +235,9 @@ for command in find wget; \
 	alias $command="noglob $command"
 
 alias rcp="rsync -a --stats --progress"
+# For syncing to targets that do not support permissions.
+alias rcp_nop="rsync -a --stats --progress --no-perms"
+
 alias igrep="grep -i"
 alias findhere="noglob find . -iname"
 
@@ -278,6 +280,8 @@ alias pbpaste="clip -o"
 alias p="pwd"
 alias bwd='pwd | sed -e "s:/:🥖:g"'
 
+alias hex_to_bin='xxd -r -p -'
+
 add_pwd_to_path() {
     export PATH=`pwd`:$PATH
     echo $PATH
@@ -285,6 +289,30 @@ add_pwd_to_path() {
 
 cdd() {
     cd $(dirname $1)
+}
+
+alias tig-latest='tig refs --sort=committerdate'
+
+# Change prompt so it's easier to copy commands and outputs to show to someone.
+demo_mode() {
+    export BAK_RPROMPT=$RPROMPT
+    export BAK_PROMPT=$PROMPT
+
+    export RPROMPT=""
+    export PROMPT="%(!.#.») "
+
+    echo 'Demo mode prompt - `exit_demo` to exit'
+
+    export exit_demo() {
+        if [[ $BAK_PROMPT != '' ]]; then
+            export RPROMPT=$BAK_RPROMPT
+            export PROMPT=$BAK_PROMPT
+
+            unset BAK_RPROMPT
+            unset BAK_PROMPT
+            unset exit_demo
+        fi
+    }
 }
 
 ### Machine-specific extras
@@ -309,3 +337,21 @@ activate_venv() {
 	fi
 }
 
+# Convert human units to bytes
+dehumanise() {
+  for v in "${@:-$(</dev/stdin)}"
+  do
+    echo $v | awk \
+      'BEGIN{IGNORECASE = 1}
+       function printpower(n,b,p) {printf "%u\n", n*b^p; next}
+       /[0-9]$/{print $1;next};
+       /K(iB)?$/{printpower($1,  2, 10)};
+       /M(iB)?$/{printpower($1,  2, 20)};
+       /G(iB)?$/{printpower($1,  2, 30)};
+       /T(iB)?$/{printpower($1,  2, 40)};
+       /KB$/{    printpower($1, 10,  3)};
+       /MB$/{    printpower($1, 10,  6)};
+       /GB$/{    printpower($1, 10,  9)};
+       /TB$/{    printpower($1, 10, 12)}'
+  done
+}
