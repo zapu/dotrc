@@ -355,3 +355,5 @@ dehumanise() {
        /TB$/{    printpower($1, 10, 12)}'
   done
 }
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

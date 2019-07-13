@@ -36,6 +36,7 @@
     pops = pull origin master
     curbr = rev-parse --abbrev-ref HEAD
     latest = branch --sort=-committerdate
+    checkout-latest = !git checkout `git branch --sort=-committerdate | fzf`
 
 [push]
     default = simple
