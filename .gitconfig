@@ -35,7 +35,8 @@
     pups = pull upstream master
     pops = pull origin master
     curbr = rev-parse --abbrev-ref HEAD
-    latest = branch --sort=-committerdate
+    latest-all = branch --sort=-committerdate
+    latest = !git latest-all --color=always | head -n 15
     checkout-latest = !git checkout `git branch --sort=-committerdate | fzf`
 
 [push]
